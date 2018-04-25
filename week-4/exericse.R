@@ -4,21 +4,22 @@ library(dplyr)
 
 # Read in the NBA team data of the 2016-2017 season from the data directory  
 # into a variable called `team.data` using `read.csv`
-
+setwd('~/Desktop/info201/lab/lab-exercises/week-4/')
+team.data <- read.csv('./data/teams.csv', stringsAsFactors = F)
 
 # The data.frame team.data should now be accessible to you. 
 # View it, and get some basic information about the number of rows/columns. 
 # Note the "X" preceding some of the column titles as well as the "*" 
 # following the names of teams that made it to the playoffs that year.
-
+View(team.data)
 
 
 # Add a column that gives the turnovers to steals ratio (TOV / STL) for each team
-
+team.data <- mutate(team.data, turnover = TOV / STL)
 
 
 # Sort the teams from lowest turnover/steal ratio to highest
-
+team.data <- arrange(team.data, turnover)
 
 # Get the team that had the highest Total Rebounds (TRB) only with the columns 
 # Team and TRB  *using one line of code*
